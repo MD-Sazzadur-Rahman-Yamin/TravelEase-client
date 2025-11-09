@@ -1,2 +1,63 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* 🕊️ Light Theme */
+@plugin "daisyui/theme" {
+  name: "travelease-light";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: oklch(99% 0 0); /* pure white background */
+  --color-base-200: oklch(96% 0 0); /* soft gray for cards */
+  --color-base-300: oklch(90% 0 0); /* light gray borders */
+  --color-base-content: oklch(10% 0 0); /* almost black text */
+
+  --color-primary: oklch(20% 0 0); /* black buttons / headers */
+  --color-primary-content: oklch(98% 0 0); /* white text inside black btns */
+
+  --color-secondary: oklch(60% 0 0); /* mid-gray accents */
+  --color-secondary-content: oklch(99% 0 0);
+
+  --color-accent: oklch(80% 0 0); /* light gray hover states */
+  --color-accent-content: oklch(10% 0 0);
+
+  --color-neutral: oklch(30% 0 0); /* black-like neutral */
+  --color-neutral-content: oklch(95% 0 0);
+
+  --radius-box: 0.75rem;
+  --border: 1px;
+}
+
+/* 🌙 Dark Theme */
+@plugin "daisyui/theme" {
+  name: "travelease-dark";
+  color-scheme: dark;
+
+  --color-base-100: oklch(22% 0 0); /* softer dark background */
+  --color-base-200: oklch(28% 0 0); /* cards slightly lighter */
+  --color-base-300: oklch(35% 0 0); /* borders / surfaces */
+  --color-base-content: oklch(95% 0 0); /* text stays bright white */
+
+  --color-primary: oklch(90% 0 0); /* white for buttons */
+  --color-primary-content: oklch(12% 0 0);
+
+  --color-secondary: oklch(70% 0 0); /* mid-gray for accents */
+  --color-secondary-content: oklch(15% 0 0);
+
+  --color-accent: oklch(40% 0 0); /* hover tone */
+  --color-accent-content: oklch(95% 0 0);
+
+  --color-neutral: oklch(30% 0 0); /* slightly lifted dark surface */
+  --color-neutral-content: oklch(95% 0 0);
+
+  --radius-box: 0.75rem;
+  --border: 1px;
+}
+
+.btn-base {
+  @apply rounded-md font-semibold border transition-all duration-300;
+}
+.btn-base:hover {
+  @apply bg-base-content text-base-100;
+}
+
