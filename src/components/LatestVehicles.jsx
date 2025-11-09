@@ -1,10 +1,11 @@
 import React, { use } from 'react';
 import VehiclesCard from './VehiclesCard';
+import { Link } from 'react-router';
 
 const LatestVehicles = ({ LatestVehiclesPromise }) => {
     const LatestVehiclesData = use(LatestVehiclesPromise);
   return (
-    <div className="w-full">
+    <div>
       <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center my-10">
         Latest Vehicles
       </h2>
@@ -15,6 +16,11 @@ const LatestVehicles = ({ LatestVehiclesPromise }) => {
             LatestVehicles={LatestVehicles}
           ></VehiclesCard>
         ))}
+      </div>
+      <div className='flex justify-center p-8'>
+        <Link className="btn btn-primary btn-outline" to="/all-vehicles">
+          All Vehicles
+        </Link>
       </div>
     </div>
   );

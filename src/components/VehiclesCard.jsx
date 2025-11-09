@@ -18,7 +18,7 @@ const VehiclesCard = ({LatestVehicles}) => {
           <p>Categories: {categories}</p>
 
           <div className="card-actions">
-            <button className="btn btn-primary w-full">Buy Now</button>
+            <button className="btn btn-primary btn-outline w-full">Buy Now</button>
           </div>
         </div>
       </div>

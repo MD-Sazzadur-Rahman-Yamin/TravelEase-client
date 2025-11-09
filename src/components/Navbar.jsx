@@ -19,36 +19,26 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">
-          Home
-        </NavLink>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/">
-          All Vehicles
-        </NavLink>
+        <NavLink to="/all-vehicles">All Vehicles</NavLink>
       </li>
       <li>
-        <NavLink to="/">
-          Add Vehicle
-        </NavLink>
+        <NavLink to="/">Add Vehicle</NavLink>
       </li>
       <li>
-        <NavLink to="/">
-          My Vehicles
-        </NavLink>
+        <NavLink to="/">My Vehicles</NavLink>
       </li>
       <li>
-        <NavLink to="/">
-          My Bookings
-        </NavLink>
+        <NavLink to="/">My Bookings</NavLink>
       </li>
     </>
   );
   const loginLinks = (
     <>
       <li>
-        <NavLink to="/">My Bookings</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </li>
     </>
   );
@@ -88,8 +78,14 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-primary btn-outline hidden sm:block">Login</button>
-        <button className="btn btn-primary btn-outline hidden sm:block">Register</button>
+        <Link to="/login">
+          <button className="btn btn-primary btn-outline hidden sm:block">
+            Login
+          </button>
+        </Link>
+        <button className="btn btn-primary btn-outline hidden sm:block">
+          Register
+        </button>
         <button className="btn btn-primary btn-outline">LogOut</button>
         <button
           onClick={toggleTheme}
