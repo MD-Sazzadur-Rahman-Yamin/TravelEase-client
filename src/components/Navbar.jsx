@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Link, NavLink } from "react-router";
+import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { logout } = useAuth();
   const [theme, setTheme] = useState("travelease-light");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -42,6 +45,17 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout()
+      .then(() => {
+        toast.success("Log Out successfully");
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  };
   return (
     <nav className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -88,7 +102,9 @@ const Navbar = () => {
             Register
           </button>
         </Link>
-        <button className="btn btn-primary btn-outline">LogOut</button>
+        <button onClick={handleLogout} className="btn btn-primary btn-outline">
+          LogOut
+        </button>
         <button
           onClick={toggleTheme}
           className="btn btn-primary-content btn-outline"
