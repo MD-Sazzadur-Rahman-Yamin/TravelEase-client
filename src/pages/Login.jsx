@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Login = () => {
   const navigate = useNavigate();
-    const emailRef = useRef();
-
+  const emailRef = useRef();
+  const location = useLocation();
 
   const {
     loginWithGoogle,
@@ -22,7 +22,7 @@ const Login = () => {
     authSignInWithEmailAndPassword(email, password).then((result) => {
       setUser(result.user);
       toast.success("Login successfully!");
-      navigate("/");
+      navigate(`${location.state ? location.state : "/"}`);
     });
   };
 
@@ -32,30 +32,30 @@ const Login = () => {
       .then((result) => {
         setUser(result.user);
         toast.success(`Login successful`);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => toast(error.message));
   };
 
-
-    const handleForgotPassword = () => {
-      const email = emailRef.current.value;
-      if (!email) return toast.error("Enter your email first!");
-      updatePassword(email)
-        .then(() => {
-          toast.success("Password reset email sent! Please check your email");
-        })
-        .catch((error) => {
-          if (error.code === "auth/too-many-requests") {
-            toast.error(
-              "Too many requests. Please try again after a few minutes."
-            );
-          } else if (error.code === "auth/user-not-found") {
-            toast.error("No account found with this email.");
-          } else {
-            toast.error(error.message);
-          }
-        });
-    };
+  const handleForgotPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) return toast.error("Enter your email first!");
+    updatePassword(email)
+      .then(() => {
+        toast.success("Password reset email sent! Please check your email");
+      })
+      .catch((error) => {
+        if (error.code === "auth/too-many-requests") {
+          toast.error(
+            "Too many requests. Please try again after a few minutes."
+          );
+        } else if (error.code === "auth/user-not-found") {
+          toast.error("No account found with this email.");
+        } else {
+          toast.error(error.message);
+        }
+      });
+  };
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
