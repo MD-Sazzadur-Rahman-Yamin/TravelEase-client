@@ -3,7 +3,8 @@ import VehiclesCard from './VehiclesCard';
 import { Link } from 'react-router';
 
 const LatestVehicles = ({ LatestVehiclesPromise }) => {
-    const LatestVehiclesData = use(LatestVehiclesPromise);
+    const LatestVehiclesResponce = use(LatestVehiclesPromise);
+    const LatestVehiclesData = LatestVehiclesResponce.data;
   return (
     <div>
       <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center my-10">

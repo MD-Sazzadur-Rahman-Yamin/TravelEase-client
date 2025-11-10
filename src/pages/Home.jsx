@@ -1,9 +1,12 @@
 import React, { Suspense } from "react";
 import Hero from "../components/Hero";
 import LatestVehicles from "../components/LatestVehicles";
+import axios from "axios";
 
 const Home = () => {
-    const LatestVehiclesPromise = fetch("http://localhost:3333/latest-vehicle").then(res=>res.json()); 
+  const LatestVehiclesPromise = axios.get(
+    "http://localhost:3333/latest-vehicle"
+  );
   return (
     <div>
       <Hero></Hero>

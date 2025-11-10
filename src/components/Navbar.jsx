@@ -3,18 +3,15 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
-      const [theme, setTheme] = useState("travelease-light");
-      useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-      }, [theme]);
-        const toggleTheme = () => {
-          const newTheme =
-            theme === "travelease-light"
-              ? "travelease-dark"
-              : "travelease-light";
-          setTheme(newTheme);
-        };
-
+  const [theme, setTheme] = useState("travelease-light");
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+  const toggleTheme = () => {
+    const newTheme =
+      theme === "travelease-light" ? "travelease-dark" : "travelease-light";
+    setTheme(newTheme);
+  };
 
   const links = (
     <>
@@ -39,6 +36,9 @@ const Navbar = () => {
     <>
       <li>
         <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/registration">Login</NavLink>
       </li>
     </>
   );
@@ -83,9 +83,11 @@ const Navbar = () => {
             Login
           </button>
         </Link>
-        <button className="btn btn-primary btn-outline hidden sm:block">
-          Register
-        </button>
+        <Link to="/registration">
+          <button className="btn btn-primary btn-outline hidden sm:block">
+            Register
+          </button>
+        </Link>
         <button className="btn btn-primary btn-outline">LogOut</button>
         <button
           onClick={toggleTheme}
