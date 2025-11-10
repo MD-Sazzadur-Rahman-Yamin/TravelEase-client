@@ -3,9 +3,10 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Link, NavLink } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const [theme, setTheme] = useState("travelease-light");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -15,7 +16,7 @@ const Navbar = () => {
       theme === "travelease-light" ? "travelease-dark" : "travelease-light";
     setTheme(newTheme);
   };
-
+  console.log(user);
   const links = (
     <>
       <li>
@@ -92,22 +93,51 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn btn-primary btn-outline hidden sm:block">
-            Login
-          </button>
-        </Link>
-        <Link to="/registration">
-          <button className="btn btn-primary btn-outline hidden sm:block">
-            Register
-          </button>
-        </Link>
-        <button onClick={handleLogout} className="btn btn-primary btn-outline">
-          LogOut
-        </button>
+        {user ? (
+          <div className="flex justify-between items-center gap-4">
+            <div className="relative inline-block group">
+              <div className="w-9 h-9 rounded-full ring-2 ring-primary ring-offset-2 overflow-hidden cursor-pointer flex items-center justify-center">
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <FaRegUserCircle className="w-full h-full" />
+                )}
+              </div>
+
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 px-3 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-10">
+                {user.displayName || "No Name"}
+              </div>
+            </div>
+
+            <button
+              onClick={handleLogout}
+              className="btn btn-primary btn-outline"
+            >
+              LogOut
+            </button>
+          </div>
+        ) : (
+          <div className="flex justify-between items-center gap-4">
+            <Link to="/login">
+              <button className="btn btn-primary btn-outline hidden sm:block">
+                Login
+              </button>
+            </Link>
+            <Link to="/registration">
+              <button className="btn btn-primary btn-outline hidden sm:block">
+                Register
+              </button>
+            </Link>
+          </div>
+        )}
+
         <button
           onClick={toggleTheme}
-          className="btn btn-primary-content btn-outline"
+          className="btn btn-primary btn-outline ml-4"
         >
           {theme === "travelease-light" ? <MdDarkMode /> : <MdLightMode />}
         </button>
