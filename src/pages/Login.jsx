@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Login = () => {
-  const { loginWithGoogle, setUser } = useAuth();
+  const navigate = useNavigate();
+    const emailRef = useRef();
+
+
+  const {
+    loginWithGoogle,
+    setUser,
+    authSignInWithEmailAndPassword,
+    updatePassword,
+  } = useAuth();
+
+  const handleLoginWithEmailAndPassword = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    authSignInWithEmailAndPassword(email, password).then((result) => {
+      setUser(result.user);
+      toast.success("Login successfully!");
+      navigate("/");
+    });
+  };
+
   const handleLoginWithGoogle = (e) => {
     e.preventDefault();
     loginWithGoogle()
@@ -15,20 +36,51 @@ const Login = () => {
       .catch((error) => toast(error.message));
   };
 
+
+    const handleForgotPassword = () => {
+      const email = emailRef.current.value;
+      if (!email) return toast.error("Enter your email first!");
+      updatePassword(email)
+        .then(() => {
+          toast.success("Password reset email sent! Please check your email");
+        })
+        .catch((error) => {
+          if (error.code === "auth/too-many-requests") {
+            toast.error(
+              "Too many requests. Please try again after a few minutes."
+            );
+          } else if (error.code === "auth/user-not-found") {
+            toast.error("No account found with this email.");
+          } else {
+            toast.error(error.message);
+          }
+        });
+    };
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h2 className="text-4xl font-bold text-center">Login</h2>
-          <form>
+          <form onSubmit={handleLoginWithEmailAndPassword}>
             <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" />
+              <input
+                type="email"
+                className="input"
+                placeholder="Enter Your Email"
+                name="email"
+                required
+                ref={emailRef}
+              />
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
+              <input
+                type="password"
+                className="input"
+                placeholder="Enter Your Password"
+                name="password"
+                required
+              />
+              <div></div>
               <button className="btn btn-primary btn-outline mt-4">
                 Login
               </button>
@@ -66,6 +118,9 @@ const Login = () => {
               </g>
             </svg>
             Login with Google
+          </button>
+          <button onClick={handleForgotPassword} className="link link-hover">
+            Forgot password?
           </button>
           <Link className="text-center font-bold" to="/registration">
             doesn't have an account. Go to Registration

@@ -27,11 +27,11 @@ const Registration = () => {
     }
     authCreateUserWithEmailAndPassword(email, password)
       .then((result) => {
-        updateUser(result.user, {
+        updateUser({
           displayName: name,
           photoURL: photoUrl,
         });
-        setUser({ displayName: name, photoURL: photoUrl });
+        setUser({...result.user, displayName: name, photoURL: photoUrl });
         toast.success("Account created successfully!");
         navigate("/");
       })
