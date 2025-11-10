@@ -16,7 +16,6 @@ const Navbar = () => {
       theme === "travelease-light" ? "travelease-dark" : "travelease-light";
     setTheme(newTheme);
   };
-  console.log(user);
   const links = (
     <>
       <li>
