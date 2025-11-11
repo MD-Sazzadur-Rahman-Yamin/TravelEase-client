@@ -8,7 +8,7 @@ import Error from "../pages/Error";
 import ViewDetails from "../pages/ViewDetails";
 import PrivateRourte from "../provider/PrivateRourte";
 import AddVehicle from "../pages/AddVehicle";
-import MyVehicle from "../pages/MyVehicle";
+import MyVehicles from "../pages/MyVehicles";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         path: "my-vehicle",
         element: (
           <PrivateRourte>
-            <MyVehicle></MyVehicle>
+            <MyVehicles></MyVehicles>
           </PrivateRourte>
         ),
       },

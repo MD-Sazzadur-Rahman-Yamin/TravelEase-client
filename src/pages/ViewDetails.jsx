@@ -1,5 +1,6 @@
 import { useLoaderData, useNavigation } from "react-router";
 import React from "react";
+import Spinner from "../components/Spinner";
 
 const VehicleDetail = () => {
   const navigation = useNavigation();
@@ -7,11 +8,7 @@ const VehicleDetail = () => {
   const vehicleData = useLoaderData();
 
   if (navigation.state === "loading") {
-    return (
-      <div className="flex justify-center items-center">
-        <span className="loading loading-spinner loading-xl min-h-screen"></span>
-      </div>
-    );
+    return <Spinner></Spinner>;
   }
 
   const {
