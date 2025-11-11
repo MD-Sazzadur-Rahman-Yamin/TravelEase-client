@@ -5,6 +5,8 @@ import AllVehicle from "../pages/AllVehicle";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import Error from "../pages/Error";
+import ViewDetails from "../pages/ViewDetails";
+import PrivateRourte from "../provider/PrivateRourte"
 
 const router = createBrowserRouter([
   {
@@ -27,12 +29,18 @@ const router = createBrowserRouter([
       },
       {
         path: "registration",
-        Component: Registration
+        Component: Registration,
+      },
+      {
+        path: "view-details/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3333/vehicle/${params.id}`),
+        element:<PrivateRourte><ViewDetails></ViewDetails></PrivateRourte>
       },
       {
         path: "*",
-        Component:Error
-      }
+        Component: Error,
+      },
     ],
   },
 ]);

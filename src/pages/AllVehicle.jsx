@@ -4,7 +4,6 @@ import VehiclesCard from '../components/VehiclesCard';
 
 const AllVehicle = () => {
     const allVehicleData = useLoaderData();
-    console.log(allVehicleData)
     return (
       <div className="max-w-7xl mx-auto mb-10">
         <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center my-10">
