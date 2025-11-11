@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router";
 import useAxios from "../hooks/useAxios";
 
 const Registration = () => {
-  const axiosH = useAxios()
+  const axiosH = useAxios();
   const navigate = useNavigate();
   const {
     loginWithGoogle,
@@ -33,12 +33,12 @@ const Registration = () => {
           displayName: name,
           photoURL: photoUrl,
         });
-        setUser({...result.user, displayName: name, photoURL: photoUrl });
+        setUser({ ...result.user, displayName: name, photoURL: photoUrl });
         const newUser = {
           name: result.user.displayName,
           email: result.user.email,
           photoUrl: result.user.photoURL,
-        }
+        };
         axiosH.post("/users", newUser);
         toast.success("Account created successfully!");
         navigate("/");
@@ -53,6 +53,12 @@ const Registration = () => {
     loginWithGoogle()
       .then((result) => {
         setUser(result.user);
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photoUrl: result.user.photoURL,
+        };
+        axiosH.post("/users", newUser);
         toast.success(`Login successful`);
         navigate("/");
       })
@@ -135,7 +141,9 @@ const Registration = () => {
             </svg>
             Login with Google
           </button>
-          <Link className="text-center font-bold" to="/login">Already have an account? Go to Login</Link>
+          <Link className="text-center font-bold" to="/login">
+            Already have an account? Go to Login
+          </Link>
         </div>
       </div>
     </div>

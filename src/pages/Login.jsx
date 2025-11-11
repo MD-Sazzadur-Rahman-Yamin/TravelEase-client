@@ -2,12 +2,14 @@ import React, { useRef } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router";
+import useAxios from "../hooks/useAxios";
 
 const Login = () => {
+  const axiosH = useAxios();
   const navigate = useNavigate();
   const emailRef = useRef();
   const location = useLocation();
-  console.log(location)
+  console.log(location);
 
   const {
     loginWithGoogle,
@@ -32,6 +34,12 @@ const Login = () => {
     loginWithGoogle()
       .then((result) => {
         setUser(result.user);
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photoUrl: result.user.photoURL,
+        };
+        axiosH.post("/users", newUser);
         toast.success(`Login successful`);
         navigate(`${location.state ? location.state : "/"}`);
       })
