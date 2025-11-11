@@ -11,7 +11,11 @@ const Home = () => {
       <Hero></Hero>
       <div className="max-w-7xl mx-auto">
         <Suspense
-          to={<span className="loading loading-spinner loading-xl"></span>}
+          to={
+            <div className="flex justify-center items-center">
+              <span className="loading loading-spinner loading-xl"></span>
+            </div>
+          }
         >
           <LatestVehicles
             LatestVehiclesPromise={LatestVehiclesPromise}

@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 const AddVehicle = () => {
   const { user } = useAuth();
   const axiosH = useAxios();
-  console.log(user);
 
   const handleAddVehicle = (e) => {
     e.preventDefault();
@@ -36,7 +35,6 @@ const AddVehicle = () => {
       categories: category,
     };
 
-    console.log(vehicleData);
 
     axiosH
       .post("/vehicle", vehicleData)

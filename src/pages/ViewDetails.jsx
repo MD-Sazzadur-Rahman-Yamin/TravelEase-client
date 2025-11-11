@@ -1,8 +1,18 @@
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigation } from "react-router";
 import React from "react";
 
 const VehicleDetail = () => {
+  const navigation = useNavigation();
+
   const vehicleData = useLoaderData();
+
+  if (navigation.state === "loading") {
+    return (
+      <div className="flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl min-h-screen"></span>
+      </div>
+    );
+  }
 
   const {
     vehicleName,
