@@ -35,13 +35,12 @@ const AddVehicle = () => {
       categories: category,
     };
 
-
     axiosH
       .post("/vehicle", vehicleData)
       .then((result) => {
-        console.log(result.data);
         if (result.data.insertedId) {
           toast.success("Vehicle added successfully");
+          e.target.reset();
         }
       })
       .catch(() => {
@@ -93,6 +92,8 @@ const AddVehicle = () => {
                 <option>SUV</option>
                 <option>Electric</option>
                 <option>Van</option>
+                <option>Pickup</option>
+                <option>Hatchback</option>
               </select>
 
               {/* Price Per Day */}
