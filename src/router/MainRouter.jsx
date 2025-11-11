@@ -7,6 +7,7 @@ import Registration from "../pages/Registration";
 import Error from "../pages/Error";
 import ViewDetails from "../pages/ViewDetails";
 import PrivateRourte from "../provider/PrivateRourte";
+import AddVehicle from "../pages/AddVehicle";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             <ViewDetails></ViewDetails>
           </PrivateRourte>
         ),
+      },
+      {
+        path: "add-vehicle",
+        element:<PrivateRourte><AddVehicle></AddVehicle></PrivateRourte>
       },
       {
         path: "*",
