@@ -6,7 +6,7 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import Error from "../pages/Error";
 import ViewDetails from "../pages/ViewDetails";
-import PrivateRourte from "../provider/PrivateRourte"
+import PrivateRourte from "../provider/PrivateRourte";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,11 @@ const router = createBrowserRouter([
         path: "view-details/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3333/vehicle/${params.id}`),
-        element:<PrivateRourte><ViewDetails></ViewDetails></PrivateRourte>
+        element: (
+          <PrivateRourte>
+            <ViewDetails></ViewDetails>
+          </PrivateRourte>
+        ),
       },
       {
         path: "*",

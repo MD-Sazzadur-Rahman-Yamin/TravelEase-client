@@ -1,12 +1,11 @@
 import React, { Suspense } from "react";
 import Hero from "../components/Hero";
 import LatestVehicles from "../components/LatestVehicles";
-import axios from "axios";
+import useAxios from "../hooks/useAxios";
 
 const Home = () => {
-  const LatestVehiclesPromise = axios.get(
-    "http://localhost:3333/latest-vehicle"
-  );
+  const axiosH = useAxios();
+  const LatestVehiclesPromise = axiosH.get("/latest-vehicle");
   return (
     <div>
       <Hero></Hero>

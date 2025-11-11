@@ -2,8 +2,10 @@ import React from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router";
+import useAxios from "../hooks/useAxios";
 
 const Registration = () => {
+  const axiosH = useAxios()
   const navigate = useNavigate();
   const {
     loginWithGoogle,
@@ -32,6 +34,12 @@ const Registration = () => {
           photoURL: photoUrl,
         });
         setUser({...result.user, displayName: name, photoURL: photoUrl });
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photoUrl: result.user.photoURL,
+        }
+        axiosH.post("/users", newUser);
         toast.success("Account created successfully!");
         navigate("/");
       })
