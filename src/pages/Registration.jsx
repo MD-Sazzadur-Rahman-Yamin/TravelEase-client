@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router";
 import useAxios from "../hooks/useAxios";
 
 const Registration = () => {
-  const axiosH = useAxios();
+  const {axiosH} = useAxios();
   const navigate = useNavigate();
   const {
     loginWithGoogle,

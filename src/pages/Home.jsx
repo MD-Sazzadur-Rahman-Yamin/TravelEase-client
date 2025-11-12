@@ -4,7 +4,7 @@ import LatestVehicles from "../components/LatestVehicles";
 import useAxios from "../hooks/useAxios";
 
 const Home = () => {
-  const axiosH = useAxios();
+  const {axiosH} = useAxios();
   const LatestVehiclesPromise = axiosH.get("/latest-vehicle");
   return (
     <div>

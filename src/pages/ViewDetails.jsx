@@ -26,6 +26,10 @@ const VehicleDetail = () => {
     categories,
   } = vehicleData;
 
+  const handleBooking = () =>{
+
+  }
+
   const handleEmailClick = () => {
     window.location.href = `mailto:${userEmail}?subject=Inquiry&body=Hello!`;
   };
@@ -34,7 +38,7 @@ const VehicleDetail = () => {
     // const textToCopy = userEmail;
     navigator.clipboard.writeText(userEmail);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // reset message after 2s
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -92,7 +96,7 @@ const VehicleDetail = () => {
 
           {/* Action Buttons */}
           <div className="card-actions mt-6">
-            <button className="btn btn-outline btn-primary">Book Now</button>
+            <button onClick={handleBooking} className="btn btn-outline btn-primary">Book Now</button>
             <button
               onClick={handleEmailClick}
               className="btn btn-outline btn-primary"

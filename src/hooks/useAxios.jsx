@@ -6,6 +6,7 @@ const instance = axios.create({
 
 
 const useAxios = () => {
-    return instance;
+  const axiosH = instance
+    return { axiosH };
 };
 export default useAxios;
