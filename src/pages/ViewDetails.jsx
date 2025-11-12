@@ -1,9 +1,12 @@
 import { useLoaderData, useNavigation } from "react-router";
 import React, { useState } from "react";
 import Spinner from "../components/Spinner";
+import useAxios from "../hooks/useAxios";
+import { toast } from "react-toastify";
 
 const VehicleDetail = () => {
   const navigation = useNavigation();
+  const { axiosH } = useAxios();
 
   const vehicleData = useLoaderData();
   const [copied, setCopied] = useState(false);
@@ -13,6 +16,7 @@ const VehicleDetail = () => {
   }
 
   const {
+    _id,
     vehicleName,
     owner,
     category,
@@ -26,9 +30,21 @@ const VehicleDetail = () => {
     categories,
   } = vehicleData;
 
-  const handleBooking = () =>{
-
-  }
+  const handleBooking = () => {
+    const newBooking = {
+      vehicleId: _id,
+      vehicleName,
+      category,
+      pricePerDay,
+      coverImage,
+      userEmail,
+    };
+    axiosH.patch("/booking", newBooking).then(result=>{
+      if(result.data.insertedId){
+        toast("This vehicles Booked")
+      }
+    });
+  };
 
   const handleEmailClick = () => {
     window.location.href = `mailto:${userEmail}?subject=Inquiry&body=Hello!`;
@@ -96,7 +112,12 @@ const VehicleDetail = () => {
 
           {/* Action Buttons */}
           <div className="card-actions mt-6">
-            <button onClick={handleBooking} className="btn btn-outline btn-primary">Book Now</button>
+            <button
+              onClick={handleBooking}
+              className="btn btn-outline btn-primary"
+            >
+              Book Now
+            </button>
             <button
               onClick={handleEmailClick}
               className="btn btn-outline btn-primary"
