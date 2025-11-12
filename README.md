@@ -1,16 +1,48 @@
-# React + Vite
+# TravelEase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Demo (Client)
 
-Currently, two official plugins are available:
+**Live site (client):** https://travel-ease-yamin.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+TravelEase – Vehicle Booking &amp; Trip Management Platform
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Key Features
+
+- **Responsive design** — works smoothly on desktop, tablet, and mobile.
+- **Fast client-side performance** — optimized bundles and lazy loading for quick page loads.
+- **User authentication** — signup, login, and role-based access control.
+- **Search & filtering** — advanced search with filters (location, category, price).
+- **Booking management** — users can create, view, and cancel bookings easily.
+- **Owner dashboard** — vehicle owners can list, edit, and remove vehicles.
+- **Secure payments** — integrate a payment gateway for safe transactions.
+- **Notifications** — email or in-app notifications for booking updates.
+- **SEO friendly** — server-side rendering or meta tags for better discoverability.
+
+---
+
+## Tech Stack
+
+- **Client:** React / Vite
+- **Server:** Node.js / Express
+- **Database:** MongoDB
+- **Auth:** Firebase
+- **Hosting:**Netlify(For Client-side), Vercel(For Server-side)
+
+---
+
+## Installation (Local Development)
+
+1. Clone the Client-side:
+   ```bash
+   git clone https://github.com/MD-Sazzadur-Rahman-Yamin/TravelEase-client.git
+   ```
+1. Clone the Server-side:
+   ```bash
+   git clone https://github.com/MD-Sazzadur-Rahman-Yamin/TravelEase-server.git
+   ```
