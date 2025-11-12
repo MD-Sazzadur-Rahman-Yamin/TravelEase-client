@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import Hero from "../components/Hero";
 import LatestVehicles from "../components/LatestVehicles";
 import useAxios from "../hooks/useAxios";
+import AboutTravelEase from "../components/AboutTravelEase";
+import FeaturedOwner from "../components/FeaturedOwner";
 
 const Home = () => {
   const {axiosH} = useAxios();
@@ -22,6 +24,8 @@ const Home = () => {
           ></LatestVehicles>
         </Suspense>
       </div>
+      <FeaturedOwner></FeaturedOwner>
+      <AboutTravelEase></AboutTravelEase>
     </div>
   );
 };

@@ -8,7 +8,7 @@
 
 ## About
 
-TravelEase – Vehicle Booking &amp; Trip Management Platform
+TravelEase is your all-in-one vehicle booking and trip management platform designed to make travel simpler, faster, and more reliable. Whether you’re planning a weekend getaway or managing daily rides, TravelEase connects users with trusted vehicle owners for smooth, transparent, and hassle-free booking experiences.
 
 ---
 
