@@ -1,11 +1,12 @@
 import { useLoaderData, useNavigation } from "react-router";
-import React from "react";
+import React, { useState } from "react";
 import Spinner from "../components/Spinner";
 
 const VehicleDetail = () => {
   const navigation = useNavigation();
 
   const vehicleData = useLoaderData();
+  const [copied, setCopied] = useState(false);
 
   if (navigation.state === "loading") {
     return <Spinner></Spinner>;
@@ -24,6 +25,17 @@ const VehicleDetail = () => {
     createdAt,
     categories,
   } = vehicleData;
+
+  const handleEmailClick = () => {
+    window.location.href = `mailto:${userEmail}?subject=Inquiry&body=Hello!`;
+  };
+
+  const handleCopy = () => {
+    // const textToCopy = userEmail;
+    navigator.clipboard.writeText(userEmail);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // reset message after 2s
+  };
 
   return (
     <div className="max-w-6xl mx-auto my-10 p-4">
@@ -81,8 +93,17 @@ const VehicleDetail = () => {
           {/* Action Buttons */}
           <div className="card-actions mt-6">
             <button className="btn btn-outline btn-primary">Book Now</button>
-            <button className="btn btn-outline btn-primary">
+            <button
+              onClick={handleEmailClick}
+              className="btn btn-outline btn-primary"
+            >
               Contact Owner
+            </button>
+            <button
+              onClick={handleCopy}
+              className="btn btn-primary btn-outline"
+            >
+              {copied ? "Copied!" : "Copy Contact Email"}
             </button>
           </div>
         </div>
