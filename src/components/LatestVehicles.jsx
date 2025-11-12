@@ -11,14 +11,11 @@ const LatestVehicles = ({ LatestVehiclesPromise }) => {
         Latest Vehicles
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-4 xl:mx-0">
-        {LatestVehiclesData.map((LatestVehicles) => (
-          <VehiclesCard
-            key={LatestVehicles._id}
-            LatestVehicles={LatestVehicles}
-          ></VehiclesCard>
+        {LatestVehiclesData.map((Vehicle) => (
+          <VehiclesCard key={Vehicle._id} Vehicle={Vehicle}></VehiclesCard>
         ))}
       </div>
-      <div className='flex justify-center p-8'>
+      <div className="flex justify-center p-8">
         <Link className="btn btn-primary btn-outline" to="/all-vehicles">
           All Vehicles
         </Link>
