@@ -1,11 +1,14 @@
 import React from "react";
-import useAxios from "../hooks/useAxios";
 import useAuth from "../hooks/useAuth";
+import { useLoaderData, useNavigate } from "react-router";
+import useAxios from "../hooks/useAxios";
 import { toast } from "react-toastify";
 
-const AddVehicle = () => {
+const UpdateVehicle = () => {
+  const vehicleData = useLoaderData();
   const { user } = useAuth();
   const axiosH = useAxios();
+  const navigate = useNavigate();
 
   const handleAddVehicle = (e) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ const AddVehicle = () => {
     const coverImage = form.coverImage.value;
     const userEmail = form.email.value;
 
-    const vehicleData = {
+    const updatedVehicleData = {
       vehicleName,
       owner,
       category,
@@ -34,25 +37,26 @@ const AddVehicle = () => {
       createdAt: new Date().toISOString(),
       categories: category,
     };
-
     axiosH
-      .post("/vehicle", vehicleData)
+      .patch(`/vehicle/${vehicleData._id}`, updatedVehicleData)
       .then((result) => {
-        if (result.data.insertedId) {
-          toast.success("Vehicle added successfully");
-          e.target.reset();
+        console.log(result);
+        if (result.data.modifiedCount) {
+          toast.success("Vehicle update successfully");
         }
+        navigate("/my-vehicle");
       })
       .catch(() => {
-        toast.error("Fail to add vehicle");
+        toast.error("Fail to update vehicle");
       });
   };
-
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl my-10">
         <div className="card-body">
-          <h2 className="text-4xl font-bold text-center mb-4">Add Vehicle</h2>
+          <h2 className="text-4xl font-bold text-center mb-4">
+            Update Vehicle
+          </h2>
 
           <form onSubmit={handleAddVehicle}>
             <fieldset className="fieldset">
@@ -64,6 +68,7 @@ const AddVehicle = () => {
                 placeholder="Enter vehicle name"
                 name="vehicleName"
                 required
+                defaultValue={vehicleData.vehicleName}
               />
 
               {/* Owner Name */}
@@ -84,6 +89,7 @@ const AddVehicle = () => {
                 name="category"
                 className="select select-bordered w-full"
                 required
+                defaultValue={vehicleData?.category || ""}
               >
                 <option disabled defaultValue>
                   Select category
@@ -104,6 +110,7 @@ const AddVehicle = () => {
                 placeholder="Enter price per day"
                 name="pricePerDay"
                 required
+                defaultValue={vehicleData.pricePerDay}
               />
 
               {/* Location */}
@@ -114,6 +121,7 @@ const AddVehicle = () => {
                 placeholder="Enter location"
                 name="location"
                 required
+                defaultValue={vehicleData.location}
               />
 
               {/* Availability */}
@@ -122,6 +130,7 @@ const AddVehicle = () => {
                 name="availability"
                 className="select select-bordered w-full"
                 required
+                defaultValue={vehicleData.availability}
               >
                 <option>Available</option>
                 {/* <option>Not Available</option> */}
@@ -134,6 +143,7 @@ const AddVehicle = () => {
                 placeholder="Enter vehicle description"
                 name="description"
                 required
+                defaultValue={vehicleData.description}
               ></textarea>
 
               {/* Cover Image */}
@@ -144,6 +154,7 @@ const AddVehicle = () => {
                 placeholder="Enter cover image URL"
                 name="coverImage"
                 required
+                defaultValue={vehicleData.coverImage}
               />
 
               {/* User Email */}
@@ -158,7 +169,7 @@ const AddVehicle = () => {
               />
 
               {/* Submit Button */}
-              <button className="btn btn-neutral mt-4">Add Vehicle</button>
+              <button className="btn btn-neutral mt-4">Update Vehicle</button>
             </fieldset>
           </form>
         </div>
@@ -167,4 +178,4 @@ const AddVehicle = () => {
   );
 };
 
-export default AddVehicle;
+export default UpdateVehicle;

@@ -9,6 +9,7 @@ import ViewDetails from "../pages/ViewDetails";
 import PrivateRourte from "../provider/PrivateRourte";
 import AddVehicle from "../pages/AddVehicle";
 import MyVehicles from "../pages/MyVehicles";
+import UpdateVehicle from "../pages/UpdateVehicle";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,16 @@ const router = createBrowserRouter([
         element: (
           <PrivateRourte>
             <MyVehicles></MyVehicles>
+          </PrivateRourte>
+        ),
+      },
+      {
+        path: "my-vehicle/update-vehicle/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3333/vehicle/${params.id}`),
+        element: (
+          <PrivateRourte>
+            <UpdateVehicle></UpdateVehicle>
           </PrivateRourte>
         ),
       },

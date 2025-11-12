@@ -81,7 +81,7 @@ const MyVehicles = () => {
                 <td className="text-center">{vehicle.category}</td>
                 <td className="text-center">{vehicle.pricePerDay}</td>
                 <td className="text-center">
-                  <div class="badge badge-neutral badge-outline">
+                  <div className="badge badge-neutral badge-outline">
                     {vehicle.availability}
                   </div>
                 </td>
@@ -92,9 +92,11 @@ const MyVehicles = () => {
                         View Details
                       </button>
                     </Link>
-                    <button className="btn btn-primary btn-outline">
-                      View Details
-                    </button>
+                    <Link to={`/my-vehicle/update-vehicle/${vehicle._id}`}>
+                      <button className="btn btn-primary btn-outline">
+                        Update
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(vehicle._id)}
                       className="btn btn-primary btn-outline"
