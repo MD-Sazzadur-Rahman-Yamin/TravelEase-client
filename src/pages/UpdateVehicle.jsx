@@ -3,6 +3,8 @@ import useAuth from "../hooks/useAuth";
 import { useLoaderData, useNavigate } from "react-router";
 import useAxios from "../hooks/useAxios";
 import { toast } from "react-toastify";
+import { motion } from "motion/react";
+
 
 const UpdateVehicle = () => {
   const vehicleData = useLoaderData();
@@ -169,7 +171,14 @@ const UpdateVehicle = () => {
               />
 
               {/* Submit Button */}
-              <button className="btn btn-neutral mt-4">Update Vehicle</button>
+              <motion.button
+                className="btn btn-neutral mt-4"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                Update Vehicle
+              </motion.button>
             </fieldset>
           </form>
         </div>

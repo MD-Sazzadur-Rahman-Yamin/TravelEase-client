@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
+import { motion } from "motion/react";
+
 
 const FeaturedOwner = () => {
   const owner = {
@@ -37,9 +39,14 @@ const FeaturedOwner = () => {
 
             <div className="card-actions mt-6">
               <Link target="_blank" to="https://www.facebook.com/msry.bd/">
-                <button className="btn btn-primary btn-outline">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="btn btn-primary btn-outline"
+                >
                   View Profile
-                </button>
+                </motion.button>
               </Link>
             </div>
           </div>

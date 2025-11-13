@@ -3,6 +3,8 @@ import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAxios from "../hooks/useAxios";
+import { motion } from "motion/react";
+
 
 const Login = () => {
   const {axiosH} = useAxios();
@@ -90,12 +92,20 @@ const Login = () => {
                 required
               />
               <div></div>
-              <button className="btn btn-primary btn-outline mt-4">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="btn btn-primary btn-outline mt-4"
+              >
                 Login
-              </button>
+              </motion.button>
             </fieldset>
           </form>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
             onClick={handleLoginWithGoogle}
             className="btn bg-white text-black border-[#e5e5e5]"
           >
@@ -127,12 +137,24 @@ const Login = () => {
               </g>
             </svg>
             Login with Google
-          </button>
-          <button onClick={handleForgotPassword} className="link link-hover">
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={handleForgotPassword}
+            className="link link-hover"
+          >
             Forgot password?
-          </button>
+          </motion.button>
           <Link className="text-center font-bold" to="/registration">
-            doesn't have an account. Go to Registration
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              doesn't have an account. Go to Registration
+            </motion.button>
           </Link>
         </div>
       </div>

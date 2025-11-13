@@ -4,6 +4,7 @@ import Spinner from "../components/Spinner";
 import useAxios from "../hooks/useAxios";
 import { toast } from "react-toastify";
 import { format } from "date-fns";
+import { motion } from "motion/react";
 
 const VehicleDetail = () => {
   const navigation = useNavigation();
@@ -113,24 +114,33 @@ const VehicleDetail = () => {
 
           {/* Action Buttons */}
           <div className="card-actions mt-6">
-            <button
+            <motion.button
               onClick={handleBooking}
               className="btn btn-outline btn-primary"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               Book Now
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={handleEmailClick}
               className="btn btn-outline btn-primary"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               Contact Owner
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={handleCopy}
               className="btn btn-primary btn-outline"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               {copied ? "Copied!" : "Copy Contact Email"}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>

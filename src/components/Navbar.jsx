@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { FaRegUserCircle } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
@@ -96,7 +97,12 @@ const Navbar = () => {
           {user ? (
             <div className="flex justify-between items-center gap-4">
               <div className="relative inline-block group">
-                <div className="w-9 h-9 rounded-full ring-2 ring-primary ring-offset-2 overflow-hidden cursor-pointer flex items-center justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="w-9 h-9 rounded-full ring-2 ring-primary ring-offset-2 overflow-hidden cursor-pointer flex items-center justify-center"
+                >
                   {user.photoURL ? (
                     <img
                       src={user.photoURL}
@@ -106,41 +112,57 @@ const Navbar = () => {
                   ) : (
                     <FaRegUserCircle className="w-full h-full" />
                   )}
-                </div>
+                </motion.div>
 
                 <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 px-3 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-10">
                   {user.displayName || "No Name"}
                 </div>
               </div>
 
-              <button
+              <motion.button
                 onClick={handleLogout}
                 className="btn btn-primary btn-outline"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 LogOut
-              </button>
+              </motion.button>
             </div>
           ) : (
             <div className="flex justify-between items-center gap-4">
               <Link to="/login">
-                <button className="btn btn-primary btn-outline hidden sm:block">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="btn btn-primary btn-outline hidden sm:block"
+                >
                   Login
-                </button>
+                </motion.button>
               </Link>
               <Link to="/registration">
-                <button className="btn btn-primary btn-outline hidden sm:block">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="btn btn-primary btn-outline hidden sm:block"
+                >
                   Register
-                </button>
+                </motion.button>
               </Link>
             </div>
           )}
 
-          <button
+          <motion.button
             onClick={toggleTheme}
             className="btn btn-primary btn-outline ml-4"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             {theme === "travelease-light" ? <MdDarkMode /> : <MdLightMode />}
-          </button>
+          </motion.button>
         </div>
       </div>
     </nav>

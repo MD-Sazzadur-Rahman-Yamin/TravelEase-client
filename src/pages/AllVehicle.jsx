@@ -2,6 +2,8 @@ import React, { useMemo, useState } from "react";
 import { useLoaderData, useNavigation } from "react-router";
 import VehiclesCard from "../components/VehiclesCard";
 import Spinner from "../components/Spinner";
+import { motion } from "motion/react";
+
 
 const AllVehicle = () => {
   const navigation = useNavigation();
@@ -75,16 +77,19 @@ const AllVehicle = () => {
           <option value="desc">High → Low</option>
         </select>
 
-        <button
+        <motion.button
           onClick={() => {
             setCategory("");
             setLocation("");
             setSortOrder("");
           }}
           className="btn btn-outline btn-primary"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           Clear Filters
-        </button>
+        </motion.button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-4 xl:mx-0">

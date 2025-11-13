@@ -3,6 +3,8 @@ import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router";
 import useAxios from "../hooks/useAxios";
+import { motion } from "motion/react";
+
 
 const Registration = () => {
   const {axiosH} = useAxios();
@@ -103,12 +105,20 @@ const Registration = () => {
                 name="password"
                 required
               />
-              <button className="btn btn-primary btn-outline mt-4">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="btn btn-primary btn-outline mt-4"
+              >
                 Register
-              </button>
+              </motion.button>
             </fieldset>
           </form>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
             onClick={handleLoginWithGoogle}
             className="btn bg-white text-black border-[#e5e5e5]"
           >
@@ -140,9 +150,15 @@ const Registration = () => {
               </g>
             </svg>
             Login with Google
-          </button>
+          </motion.button>
           <Link className="text-center font-bold" to="/login">
-            Already have an account? Go to Login
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              Already have an account? Go to Login
+            </motion.button>
           </Link>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import {motion} from "motion/react"
 
 const AboutTravelEase = () => {
   return (
@@ -19,14 +20,24 @@ const AboutTravelEase = () => {
 
         <div className="flex flex-wrap justify-center gap-4 mt-6">
           <Link to="/all-vehicles">
-            <button className="btn btn-primary btn-outline">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="btn btn-primary btn-outline"
+            >
               Explore Vehicles
-            </button>
+            </motion.button>
           </Link>
           <Link to="/add-vehicle">
-            <button className="btn btn-primary btn-outline">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="btn btn-primary btn-outline"
+            >
               Add Your Vehicle
-            </button>
+            </motion.button>
           </Link>
         </div>
       </div>

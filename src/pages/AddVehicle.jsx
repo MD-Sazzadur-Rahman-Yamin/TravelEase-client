@@ -2,6 +2,8 @@ import React from "react";
 import useAxios from "../hooks/useAxios";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { motion } from "motion/react";
+
 
 const AddVehicle = () => {
   const { user } = useAuth();
@@ -158,7 +160,14 @@ const AddVehicle = () => {
               />
 
               {/* Submit Button */}
-              <button className="btn btn-neutral mt-4">Add Vehicle</button>
+              <motion.button
+                className="btn btn-neutral mt-4"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                Add Vehicle
+              </motion.button>
             </fieldset>
           </form>
         </div>

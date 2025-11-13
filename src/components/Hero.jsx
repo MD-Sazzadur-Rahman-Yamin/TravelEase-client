@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { motion } from "motion/react";
+
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -21,12 +23,15 @@ const Hero = () => {
           <p className="text-lg md:text-2xl mb-8">
             Your vehicle booking and trip management platform
           </p>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
             onClick={() => navigate("/all-vehicles")}
             className="btn btn-primary-content btn-outline"
           >
             All Vehicles
-          </button>
+          </motion.button>
         </div>
       </section>
     </div>

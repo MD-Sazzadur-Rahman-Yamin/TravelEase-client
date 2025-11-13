@@ -3,6 +3,8 @@ import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { motion } from "motion/react";
+
 
 const MyVehicles = () => {
   const { user } = useAuth();
@@ -68,14 +70,19 @@ const MyVehicles = () => {
               <tr key={index}>
                 <th>{index + 1}</th>
                 <td className="text-center">
-                  <div className="avatar">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="avatar"
+                  >
                     <div className="w-10 rounded">
                       <img
                         src={vehicle.coverImage}
                         alt="Tailwind-CSS-Avatar-component"
                       />
                     </div>
-                  </div>
+                  </motion.div>
                 </td>
                 <td className="text-center">{vehicle.vehicleName}</td>
                 <td className="text-center">{vehicle.category}</td>
@@ -88,21 +95,46 @@ const MyVehicles = () => {
                 <td>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-2">
                     <Link to={`/view-details/${vehicle._id}`}>
-                      <button className="btn btn-primary btn-outline">
+                      <motion.button
+                        className="btn btn-primary btn-outline"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                      >
                         View Details
-                      </button>
+                      </motion.button>
                     </Link>
                     <Link to={`/my-vehicle/update-vehicle/${vehicle._id}`}>
-                      <button className="btn btn-primary btn-outline">
+                      <motion.button
+                        className="btn btn-primary btn-outline"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                      >
                         Update
-                      </button>
+                      </motion.button>
                     </Link>
-                    <button
+                    <motion.button
                       onClick={() => handleDelete(vehicle._id)}
                       className="btn btn-primary btn-outline"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
                     >
                       Delete
-                    </button>
+                    </motion.button>
                   </div>
                 </td>
               </tr>
