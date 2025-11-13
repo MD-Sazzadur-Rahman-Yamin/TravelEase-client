@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Spinner from "../components/Spinner";
 import useAxios from "../hooks/useAxios";
 import { toast } from "react-toastify";
+import { format } from "date-fns";
 
 const VehicleDetail = () => {
   const navigation = useNavigation();
@@ -74,7 +75,7 @@ const VehicleDetail = () => {
         <div className="card-body lg:w-1/2">
           <h2 className="card-title text-4xl font-bold">{vehicleName}</h2>
           <p className="text-sm text-gray-500">
-            Added on: {new Date(createdAt).toLocaleDateString()}
+            Added on: {format(new Date(createdAt), "PPP")}
           </p>
 
           <div className="divider"></div>
