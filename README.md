@@ -14,15 +14,11 @@ TravelEase is your all-in-one vehicle booking and trip management platform desig
 
 ## Key Features
 
-- **Responsive design** — works smoothly on desktop, tablet, and mobile.
-- **Fast client-side performance** — optimized bundles and lazy loading for quick page loads.
-- **User authentication** — signup, login, and role-based access control.
-- **Search & filtering** — advanced search with filters (location, category, price).
-- **Booking management** — users can create, view, and cancel bookings easily.
-- **Owner dashboard** — vehicle owners can list, edit, and remove vehicles.
-- **Secure payments** — integrate a payment gateway for safe transactions.
-- **Notifications** — email or in-app notifications for booking updates.
-- **SEO friendly** — server-side rendering or meta tags for better discoverability.
+- **🚗 Full-Stack Vehicle Booking Platform** — A complete MERN stack web application where users can explore, rent, and manage vehicles for travel or rental purposes.
+- **🔐 Secure Authentication System** — Integrated with Firebase Authentication supporting Email/Password and Google login for easy and safe access.
+- **🧭 Dynamic and Responsive UI** — Modern, mobile-friendly design built with Tailwind CSS and DaisyUI, including light/dark mode toggle and consistent layout.
+- **📦 User Dashboard Features:** — Authenticated users can add, update, delete, and view their own listed vehicles, as well as track their bookings in real time.
+- **⚙️ Efficient Backend with MongoDB** — Vehicles, users, and bookings are stored and managed through Express.js API endpoints, with Axios for secure data fetching.
 
 ---
 
