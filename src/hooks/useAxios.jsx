@@ -3,7 +3,7 @@ import axios from "axios";
 // import { useEffect } from "react";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: "https://travel-ease-server-two.vercel.app",
 });
 
 const useAxios = () => {
