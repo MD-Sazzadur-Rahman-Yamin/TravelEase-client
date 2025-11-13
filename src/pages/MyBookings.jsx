@@ -15,12 +15,9 @@ const MyBookings = () => {
     axiosH
       .get(`/booking?userEmail=${user.email}`)
       .then((res) => setMyBooking(res.data))
-      .catch((err) => console.error(err));
   }, [user, axiosH, setMyBooking]);
-  console.log(myBooking);
 
   const handleCancel = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -53,8 +50,7 @@ const MyBookings = () => {
               });
             }
           })
-          .catch((err) => {
-            console.error(err);
+          .catch(() => {
             Swal.fire({
               title: "Error!",
               text: "Something went wrong. Please try again.",

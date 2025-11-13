@@ -11,7 +11,6 @@ const Login = () => {
   const navigate = useNavigate();
   const emailRef = useRef();
   const location = useLocation();
-  console.log(location);
 
   const {
     loginWithGoogle,

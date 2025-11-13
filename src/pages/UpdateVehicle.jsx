@@ -42,7 +42,6 @@ const UpdateVehicle = () => {
     axiosH
       .patch(`/vehicle/${vehicleData._id}`, updatedVehicleData)
       .then((result) => {
-        console.log(result);
         if (result.data.modifiedCount) {
           toast.success("Vehicle update successfully");
         }

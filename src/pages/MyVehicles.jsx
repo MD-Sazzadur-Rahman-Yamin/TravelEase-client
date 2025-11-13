@@ -16,7 +16,6 @@ const MyVehicles = () => {
     axiosH
       .get(`/vehicle?userEmail=${user.email}`)
       .then((res) => setMyVehicles(res.data))
-      .catch((err) => console.error(err));
   }, [user, axiosH, setMyVehicles]);
 
   const handleDelete = (_id) => {
